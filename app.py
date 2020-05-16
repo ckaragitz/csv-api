@@ -52,10 +52,8 @@ def get_leads(job):
     rows = cur.fetchall()
     print(rows)
 
-    #find job_id
-    #construct file URL
-    response = make_response(rows)
-    response.headers["Content-Disposition"] = "attachment; filename=result.csv"
+    #construct file URL for download
+    response = jsonify(items=rows)
     return response
   
 if __name__ == '__main__':
