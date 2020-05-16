@@ -21,12 +21,13 @@ def post_leads():
 
     stream = io.StringIO(f.stream.read().decode("UTF8"), newline=None)
     reader = csv.reader(stream)
-    #next(reader)
+    next(reader)
 
     for row in reader:
         print(row)
 
-    cur.copy_from(stream.read(), '"External Lead"', sep=',')
+    print(stream)
+    cur.copy_from(stream, '"External Lead"', sep=',')
 
     stream.seek(0)
     result = stream.read()
