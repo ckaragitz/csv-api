@@ -48,7 +48,7 @@ def get_leads(job):
     cur = conn.cursor()
 
     query = 'SELECT job_id FROM "External_Lead";'
-    cur.execute('SELECT job_id FROM "External_Lead" WHERE job_id = %s;' % str(job))
+    cur.execute("""SELECT job_id FROM "External_Lead" WHERE job_id = '%s';""" % str(job))
     rows = cur.fetchall()
     print(rows)
 
