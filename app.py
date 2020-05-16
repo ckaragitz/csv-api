@@ -27,7 +27,7 @@ def post_leads():
         print(row)
         cur.execute(
         'INSERT INTO "External Lead" VALUES (%s, %s, %s, %s, %s, %s, %s);',
-        (tuple(row))
+        (row,)
         )
 
     conn.commit()
