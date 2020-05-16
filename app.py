@@ -26,7 +26,6 @@ def post_leads():
     for row in reader:
         print(row)
 
-    next(f)
     cur.copy_from(f, 'External Lead', sep=',')
 
     stream.seek(0)
