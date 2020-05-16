@@ -26,7 +26,7 @@ def post_leads():
     for row in reader:
         print(row)
 
-    cur.copy_from(f, '"External Lead"', sep=',')
+    cur.copy_from(stream.read(), '"External Lead"', sep=',')
 
     stream.seek(0)
     result = stream.read()
