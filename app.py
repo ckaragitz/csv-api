@@ -25,9 +25,14 @@ def post_leads():
 
     for row in reader:
         print(row)
+        cur.execute(
+        'INSERT INTO "External Lead" VALUES (%s, %s, %s, %s, %s, %s, %s)',
+        row
+    )
 
-    print(stream)
-    cur.copy_from(stream, '"External Lead"', sep=',')
+    conn.commit()
+
+    #cur.copy_from(stream, '"External Lead"', sep=',')
 
     stream.seek(0)
     result = stream.read()
