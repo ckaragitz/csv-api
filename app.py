@@ -32,8 +32,6 @@ def post_leads():
 
     conn.commit()
 
-    #cur.copy_from(stream, '"External Lead"', sep=',')
-
     stream.seek(0)
     result = stream.read()
 
