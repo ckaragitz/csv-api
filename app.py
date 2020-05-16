@@ -20,12 +20,14 @@ def post_leads():
         return "No file"
 
     stream = io.StringIO(f.stream.read().decode("UTF8"), newline=None)
-    csv_input = csv.reader(stream)
-    #print("file contents: ", file_contents)
-    #print(type(file_contents))
-    print(csv_input)
-    for row in csv_input:
+    reader = csv.reader(stream)
+    #next(reader)
+
+    for row in reader:
         print(row)
+
+    next(f)
+    cur.copy_from(f, 'External Lead', sep=',')
 
     stream.seek(0)
     result = stream.read()
