@@ -24,8 +24,8 @@ def post_leads(job):
 
     print("...Loading data into Postgres...")
     for row in reader:
-        print(row)
         row.append(str(job))
+        print(row)
         cur.execute(
         'INSERT INTO "External_Lead" (id, first, last, phone, email, company, source, job_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);',
         (row)
