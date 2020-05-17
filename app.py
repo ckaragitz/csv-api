@@ -22,14 +22,14 @@ def post_leads(job):
     reader = csv.reader(stream)
     next(reader)
 
-#don't forget: added job after row part
     print("...Loading data into Postgres...")
     for row in reader:
         print(row)
         cur.execute(
         'INSERT INTO "External_Lead" (id, first, last, phone, email, company, source, job_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);',
-        (row, job)
+        (row)
         )
+        cur.execute('INSERT INTO "External_Lead" (job_id) VALUES (%s);' % str(job))
 
     conn.commit()
     print("...Complete...")
