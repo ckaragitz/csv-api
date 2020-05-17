@@ -22,14 +22,6 @@ def post_leads():
     stream = io.StringIO(f.stream.read().decode("UTF8"), newline=None)
     reader = csv.reader(stream)
 
-    base64_message = f
-    base64_bytes = base64_message.encode('ascii')
-    message_bytes = base64.b64decode(base64_bytes)
-    message = message_bytes.decode('ascii')
-    print("Message: " + message)
-
-    next(reader)
-
     print("...Loading data into Postgres...")
     for row in reader:
         print(row)
