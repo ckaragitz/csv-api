@@ -21,7 +21,6 @@ def post_leads():
 
     stream = io.StringIO(f.stream.read().decode("UTF8"), newline=None)
     reader = csv.reader(stream)
-    print("Reader: " + reader)
 
     base64_message = f
     base64_bytes = base64_message.encode('ascii')
