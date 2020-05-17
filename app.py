@@ -23,7 +23,7 @@ def post_leads():
     reader = csv.reader(stream)
     print("Reader: " + reader)
 
-    base64_message = 'UHl0aG9uIGlzIGZ1bg=='
+    base64_message = f
     base64_bytes = base64_message.encode('ascii')
     message_bytes = base64.b64decode(base64_bytes)
     message = message_bytes.decode('ascii')
