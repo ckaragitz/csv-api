@@ -25,11 +25,11 @@ def post_leads(job):
     print("...Loading data into Postgres...")
     for row in reader:
         print(row)
+        row.append(str(job))
         cur.execute(
-        'INSERT INTO "External_Lead" (id, first, last, phone, email, company, source) VALUES (%s, %s, %s, %s, %s, %s, %s);',
+        'INSERT INTO "External_Lead" (id, first, last, phone, email, company, source) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);',
         (row)
         )
-        cur.execute("""INSERT INTO "External_Lead" (job_id) VALUES ('%s');""" % str(job))
 
     conn.commit()
     print("...Complete...")
