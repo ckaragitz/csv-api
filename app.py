@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify, make_response
 import gunicorn
 import os
 import io
-import base64
 import csv
 import psycopg2
 
@@ -21,6 +20,7 @@ def post_leads():
 
     stream = io.StringIO(f.stream.read().decode("UTF8"), newline=None)
     reader = csv.reader(stream)
+    next(reader)
 
     print("...Loading data into Postgres...")
     for row in reader:
