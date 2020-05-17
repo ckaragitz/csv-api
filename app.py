@@ -18,8 +18,7 @@ def post_leads():
     if not f:
         return "No file"
 
-    stream = io.StringIO(f.stream.read().decode("UTF8"), newline=None)
-    print("STREAM: " +  stream)
+    stream = io.StringIO(f.stream.read().decode("UTF8").decode("UTF8"), newline=None)
     reader = csv.reader(stream)
     next(reader)
 
