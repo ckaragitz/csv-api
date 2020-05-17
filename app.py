@@ -7,8 +7,8 @@ import psycopg2
 
 app = Flask(__name__)
 
-@app.route('/leads', methods=["POST"])
-def post_leads():
+@app.route('/leads/<job>', methods=["POST"])
+def post_leads(job):
 
     DATABASE_URL = os.environ['DATABASE_URL']
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
@@ -22,12 +22,13 @@ def post_leads():
     reader = csv.reader(stream)
     next(reader)
 
+#don't forget: added job after row part
     print("...Loading data into Postgres...")
     for row in reader:
         print(row)
         cur.execute(
         'INSERT INTO "External_Lead" (id, first, last, phone, email, company, source, job_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);',
-        (row)
+        (row, job)
         )
 
     conn.commit()
