@@ -27,7 +27,7 @@ def post_leads(job):
         print(row)
         row.append(str(job))
         cur.execute(
-        'INSERT INTO "External_Lead" (id, first, last, phone, email, company, source) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);',
+        'INSERT INTO "External_Lead" (id, first, last, phone, email, company, source, job_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);',
         (row)
         )
 
