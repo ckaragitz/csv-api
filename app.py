@@ -54,7 +54,7 @@ def get_leads(job):
     print(rows)
 
     with open("lead_results.csv", 'w', encoding='utf-8') as out_file:
-        writer = csv.writer(f, delimiter=';', lineterminator='\n')
+        w = csv.writer(out_file, delimiter=';', lineterminator='\n')
         for row in rows:
             print(row)
             w.writerow(row)
