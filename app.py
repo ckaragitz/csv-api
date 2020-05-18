@@ -59,8 +59,6 @@ def get_leads(job):
             print(row)
             w.writerow(row)
 
-
-    #construct file URL for download
     response = send_file('lead_results.csv', attachment_filename='lead_results.csv')
     return response
   
