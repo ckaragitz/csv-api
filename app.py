@@ -51,6 +51,7 @@ def get_leads(job):
     query = 'SELECT job_id FROM "External_Lead";'
     cur.execute("""SELECT job_id,first,last,phone,score FROM "External_Lead" WHERE job_id = '%s';""" % str(job))
     rows = cur.fetchall()
+    print(rows)
 
     #construct file URL for download
     response = jsonify(items=rows)
