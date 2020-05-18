@@ -49,12 +49,12 @@ def get_leads(job):
     cur = conn.cursor()
 
     query = 'SELECT job_id FROM "External_Lead";'
-    cur.execute("""SELECT job_id,first,last,phone,score FROM "External_Lead" WHERE job_id = '%s';""" % str(job))
+    cur.execute("""SELECT first, last, phone, email, company, source, score, job_id FROM "External_Lead" WHERE job_id = '%s';""" % str(job))
     rows = cur.fetchall()
     print(rows)
 
     with open("lead_results.csv", 'w', encoding='utf-8') as out_file:
-        w = csv.writer(out_file, delimiter=';', lineterminator='\n')
+        w = csv.writer(out_file, delimiter=',', lineterminator='\n')
         for row in rows:
             print(row)
             w.writerow(row)
