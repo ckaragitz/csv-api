@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, make_response
+from flask import Flask, request, jsonify, make_response, send_file
 import gunicorn
 import os
 import io
@@ -53,8 +53,14 @@ def get_leads(job):
     rows = cur.fetchall()
     print(rows)
 
+    with open("lead_results.csv", 'w', encoding='utf-8') as out_file:
+        w = csv.writer(rows, delimiter=' ')
+        for row in rows:
+            w.writerow(row)
+
+
     #construct file URL for download
-    response = jsonify(items=rows)
+    response = send_file('lead_results.csv', attachment_filename='lead_results.csv')
     return response
   
 if __name__ == '__main__':
