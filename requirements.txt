@@ -23,7 +23,7 @@ lib50==2.0.8
 lxml==4.4.1
 MarkupSafe==1.1.1
 mccabe==0.6.1
-numpy==1.17.3
+numpy==1.22.0
 pandas==0.25.3
 paramiko==2.7.1
 pexpect==4.8.0
